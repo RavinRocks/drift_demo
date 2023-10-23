@@ -10,7 +10,6 @@ class $TodoItemsTable extends TodoItems
   final String? _alias;
   $TodoItemsTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
-
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
@@ -24,7 +23,7 @@ class $TodoItemsTable extends TodoItems
   late final GeneratedColumn<String> title = GeneratedColumn<String>(
       'title', aliasedName, false,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 6, maxTextLength: 32),
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 32),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
   static const VerificationMeta _contentMeta =

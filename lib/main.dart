@@ -63,7 +63,10 @@ class _MyHomePageState extends StatelessWidget {
 
   update_data(int id, String title, String content)
   async {
-    database.updateEmployee(TodoItemsCompanion(id: dr.Value(id),title: dr.Value(title),content: dr.Value(content))).then((value) => null);
+    database.updateEmployee(
+        TodoItemsCompanion(id: dr.Value(id),
+            title: dr.Value(title),
+            content: dr.Value(content))).then((value) => null);
     allItems = await database.select(database.todoItems).get();
     dashboard_controller.onInit();
   }
