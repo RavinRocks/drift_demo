@@ -1,9 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, avoid_print
 import 'package:drift/drift.dart' as dr;
-import 'package:driftinsert/AddNote_Controller.dart';
+import 'package:driftinsert/Controller/AddNote_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'database.dart';
+import 'databsase/database.dart';
 
 List<TodoItem>? allItems;
 final database = AppDatabase();
@@ -95,6 +95,8 @@ class _MyHomePageState extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                         child: InkWell(
                           onTap: () {
+                            title_controller2.text=dashboard_controller.allItems![index].title;
+                            content_controller2.text=dashboard_controller.allItems![index].content;
                             showGeneralDialog(
                               context: context,
                               barrierLabel: "showGeneralDialog",
@@ -110,13 +112,14 @@ class _MyHomePageState extends StatelessWidget {
                                     margin: const EdgeInsets.all(20),
                                     child: Column(
                                       children: [
-                                        TextField(
+                                        TextFormField(
+
                                             controller: title_controller2,
                                             decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 fillColor: Colors.grey,
                                                 hintText: dashboard_controller.allItems![index].title)),
-                                        TextField(
+                                        TextFormField(
                                         controller: content_controller2,
                                         decoration: InputDecoration(
                                         border: InputBorder.none,
