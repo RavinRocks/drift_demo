@@ -22,8 +22,9 @@ class MyApp extends StatelessWidget
   {
     return MaterialApp(
       title: 'Drift Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white10),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
       home: _MyHomePageState(),
@@ -78,7 +79,7 @@ class _MyHomePageState extends StatelessWidget {
         init:dashboard_controller ,
         builder: (dashboard_controller) {
           return Scaffold(
-            appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+            appBar: AppBar(
               title: const Text('Drift Data'),
             ),
             body: Column(
@@ -91,8 +92,14 @@ class _MyHomePageState extends StatelessWidget {
                       return Container(
                         margin: const EdgeInsets.all(10),
                         padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(color: Colors.greenAccent,
-                        borderRadius: BorderRadius.circular(10)),
+                        decoration: BoxDecoration(color: Colors.white,
+                          shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(10),// BoxShape.circle or BoxShape.retangle
+                          //color: const Color(0xFF66BB6A),
+                          boxShadow: const [BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 5.0,
+                        ),]),
                         child: InkWell(
                           onTap: () {
                             title_controller2.text=dashboard_controller.allItems![index].title;
@@ -113,7 +120,6 @@ class _MyHomePageState extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         TextFormField(
-
                                             controller: title_controller2,
                                             decoration: InputDecoration(
                                                 border: InputBorder.none,
@@ -199,7 +205,7 @@ class _MyHomePageState extends StatelessWidget {
                   ),
                 );
               },);
-          }, child: const Icon(Icons.add)),
+          }, child: const Icon(Icons.add,)),
           );
       });
   }
