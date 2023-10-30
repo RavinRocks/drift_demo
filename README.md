@@ -1,16 +1,12 @@
 # Drift CRUD
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
+This project is a about CRUD Operation in Drift Database
 
 A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1) insert in Database
+2) Display all records
+3) update records
+4) delete records
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Drift Crud using GEtX State management library 
