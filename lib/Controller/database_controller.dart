@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../databsase/database.dart';
 import '../main.dart';
 
-class AddNote_Controller extends GetxController
+class database_controller extends GetxController
 {
   List<TodoItem>? allItems=<TodoItem>[].obs;
 

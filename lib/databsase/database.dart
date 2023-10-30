@@ -19,31 +19,26 @@ class AppDatabase extends _$AppDatabase {
   @override
   int get schemaVersion => 1;
 
-  Future<int> deleteEmployee(int id) async {
+  Future<int> deleteRecord(int id) async {
     return (delete(todoItems)..where((tbl) => tbl.id.equals(id))).go();
   }
-
-  Future<bool> updateEmployee(TodoItemsCompanion imd) async {
+  Future<bool> updateRecord(TodoItemsCompanion imd) async {
     return await update(todoItems).replace(imd);
   }
-
-  Future<int> insertEmployee(TodoItemsCompanion imd) async {
+  Future<int> insertRecord(TodoItemsCompanion imd) async {
     return await into(todoItems).insert(imd);
   }
-
-  Future<List<TodoItem>> getEmployee() async {
+  Future<List<TodoItem>> getAllRecords() async {
     return await select(todoItems).get();
   }
-
-  Future<int> deleteAllEmployee() async {
+  Future<int> deleteAllRecords() async {
     return await delete(todoItems).go();
   }
 }
-
-LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db.sqlite'));
-    return NativeDatabase.createInBackground(file);
-  });
+  LazyDatabase _openConnection() {
+    return LazyDatabase(() async {
+      final dbFolder = await getApplicationDocumentsDirectory();
+      final file = File(p.join(dbFolder.path, 'db.sqlite'));
+      return NativeDatabase.createInBackground(file);
+    });
 }
