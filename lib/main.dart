@@ -106,15 +106,11 @@ class _MyHomePageState extends StatelessWidget {
                                   Text(datacontroller.allItems![index].title,
                                       style: const TextStyle(color: Colors.black)),
                                   Text(datacontroller.allItems![index].content, style: const TextStyle(color: Colors.black)),
-
                                 ],
                               ),
                               Row(
                                 children: [
-                                  IconButton(onPressed: () {
-                                    delete_data(datacontroller.allItems![index].id);
-                                  }, icon: const Icon(Icons.delete)),
-                                  IconButton(onPressed: () {
+                                   IconButton(onPressed: () {
                                     title_update_controller.text=datacontroller.allItems![index].title;
                                     content_update_controller.text=datacontroller.allItems![index].content;
                                     showGeneralDialog(
@@ -153,6 +149,10 @@ class _MyHomePageState extends StatelessWidget {
                                       },);
 
                                   }, icon: const Icon(Icons.edit)),
+                                    IconButton(onPressed: () {
+                                      delete_data(datacontroller.allItems![index].id);
+                                    }, icon: const Icon(Icons.delete)),
+
                                 ],
                               )
 
