@@ -1,18 +1,12 @@
 // ignore_for_file: non_constant_identifier_names, avoid_print
-import 'package:drift/drift.dart' as dr;
 import 'package:driftinsert/Controller/database_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'databsase/database.dart';
-
-final database = AppDatabase();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Get.put(database_controller());
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget
 {
   const MyApp({super.key});
@@ -29,48 +23,15 @@ class MyApp extends StatelessWidget
       home: _MyHomePageState(),
     );
   }
-
 }
-
 
 class _MyHomePageState extends StatelessWidget {
 
   final datacontroller = Get.put(database_controller());
-  List<TodoItem>? allDataRecords;
-
   TextEditingController title_controller =TextEditingController();
   TextEditingController content_controller =TextEditingController();
-
   TextEditingController title_update_controller =TextEditingController();
   TextEditingController content_update_controller =TextEditingController();
-
-  insertData(String titles,String contents)
-  async {
-    await database.into(database.todoItems).insert(TodoItemsCompanion.insert(
-      title: titles,
-      content: contents,
-    ));
-  }
-
-  display_records()
-  async {
-    allDataRecords = await database.select(database.todoItems).get();
-  }
-
-  delete_data(int id)
-  async {
-    database.deleteRecord(id).then((value) => null);
-    allDataRecords = await database.select(database.todoItems).get();
-    datacontroller.onInit();
-  }
-
-  update_data(int id, String title, String content)
-  async {
-    database.updateRecord(TodoItemsCompanion(id: dr.Value(id), title: dr.Value(title),
-            content: dr.Value(content))).then((value) => null);
-    allDataRecords = await database.select(database.todoItems).get();
-    datacontroller.onInit();
-  }
 
   @override
   Widget build(BuildContext context)
@@ -106,15 +67,12 @@ class _MyHomePageState extends StatelessWidget {
                                   Text(datacontroller.allItems![index].title,
                                       style: const TextStyle(color: Colors.black)),
                                   Text(datacontroller.allItems![index].content, style: const TextStyle(color: Colors.black)),
-
                                 ],
                               ),
                               Row(
                                 children: [
-                                  IconButton(onPressed: () {
-                                    delete_data(datacontroller.allItems![index].id);
-                                  }, icon: const Icon(Icons.delete)),
-                                  IconButton(onPressed: () {
+                                   IconButton(onPressed: () {
+
                                     title_update_controller.text=datacontroller.allItems![index].title;
                                     content_update_controller.text=datacontroller.allItems![index].content;
                                     showGeneralDialog(
@@ -140,7 +98,7 @@ class _MyHomePageState extends StatelessWidget {
                                                     decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
                                                         hintText: datacontroller.allItems![index].content)),
                                                 TextButton(onPressed: () {
-                                                  update_data(datacontroller.allItems![index].id, title_update_controller.text,
+                                                  datacontroller.update_data(datacontroller.allItems![index].id, title_update_controller.text,
                                                       content_update_controller.text);
                                                   title_update_controller.clear();
                                                   content_update_controller.clear();
@@ -151,11 +109,12 @@ class _MyHomePageState extends StatelessWidget {
                                           ),
                                         );
                                       },);
-
                                   }, icon: const Icon(Icons.edit)),
+                                    IconButton(onPressed: () {
+                                      datacontroller.delete_data(datacontroller.allItems![index].id);
+                                    }, icon: const Icon(Icons.delete)),
                                 ],
                               )
-
                             ],
                           ),
                         ),
@@ -188,7 +147,7 @@ class _MyHomePageState extends StatelessWidget {
                                 fillColor: Colors.grey,
                                 hintText: 'Content')),
                         TextButton(onPressed: () {
-                            insertData(title_controller.text, content_controller.text);
+                          datacontroller.insertData(title_controller.text, content_controller.text);
                             datacontroller.onInit();
                             title_controller.clear();
                             content_controller.clear();
