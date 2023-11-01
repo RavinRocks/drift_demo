@@ -97,43 +97,6 @@ class _MyHomePageState extends StatelessWidget {
                           boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 5.0,),]),
                         child: InkWell(
                           onTap: () {
-                            title_update_controller.text=datacontroller.allItems![index].title;
-                            content_update_controller.text=datacontroller.allItems![index].content;
-                            showGeneralDialog(
-                              context: context,
-                              barrierLabel: "showGeneralDialog",
-                              barrierDismissible: true,
-                              transitionDuration: const Duration(milliseconds: 400),
-                              pageBuilder: (context, animation, secondaryAnimation) {
-                                return Dialog(
-                                  backgroundColor: Colors.white,
-                                  elevation: 0,
-                                  child: Container(
-                                    height: 150,
-                                    margin: const EdgeInsets.all(20),
-                                    child: Column(
-                                      children: [
-                                        TextFormField(
-                                        controller: title_update_controller,
-                                        decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
-                                          hintText: datacontroller.allItems![index].title)),
-                                        TextFormField(
-                                        controller: content_update_controller,
-                                        decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
-                                          hintText: datacontroller.allItems![index].content)),
-                                        TextButton(onPressed: () {
-                                          update_data(datacontroller.allItems![index].id,
-                                          title_update_controller.text,
-                                          content_update_controller.text);
-                                          title_update_controller.clear();
-                                          content_update_controller.clear();
-                                          Navigator.pop(context);
-                                        }, child: const Text('Update'))
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +108,47 @@ class _MyHomePageState extends StatelessWidget {
                                       style: const TextStyle(color: Colors.black)),
                                   IconButton(onPressed: () {
                                     delete_data(datacontroller.allItems![index].id);
-                                  }, icon: const Icon(Icons.delete))
+                                  }, icon: const Icon(Icons.delete)),
+                                  IconButton(onPressed: () {
+                                    title_update_controller.text=datacontroller.allItems![index].title;
+                                    content_update_controller.text=datacontroller.allItems![index].content;
+                                    showGeneralDialog(
+                                      context: context,
+                                      barrierLabel: "showGeneralDialog",
+                                      barrierDismissible: true,
+                                      transitionDuration: const Duration(milliseconds: 400),
+                                      pageBuilder: (context, animation, secondaryAnimation) {
+                                        return Dialog(
+                                          backgroundColor: Colors.white,
+                                          elevation: 0,
+                                          child: Container(
+                                            height: 150,
+                                            margin: const EdgeInsets.all(20),
+                                            child: Column(
+                                              children: [
+                                                TextFormField(
+                                                    controller: title_update_controller,
+                                                    decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
+                                                        hintText: datacontroller.allItems![index].title)),
+                                                TextFormField(
+                                                    controller: content_update_controller,
+                                                    decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
+                                                        hintText: datacontroller.allItems![index].content)),
+                                                TextButton(onPressed: () {
+                                                  update_data(datacontroller.allItems![index].id,
+                                                      title_update_controller.text,
+                                                      content_update_controller.text);
+                                                  title_update_controller.clear();
+                                                  content_update_controller.clear();
+                                                  Navigator.pop(context);
+                                                }, child: const Text('Update'))
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },);
+
+                                  }, icon: const Icon(Icons.edit))
                                 ],
                               ),
                               Text(datacontroller.allItems![index].content, style: const TextStyle(color: Colors.black)),
