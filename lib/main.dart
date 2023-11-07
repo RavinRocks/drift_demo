@@ -50,8 +50,8 @@ class _MyHomePageState extends StatelessWidget {
                         margin: const EdgeInsets.all(10),
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(color: Colors.white, shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(10),// BoxShape.circle or BoxShape.retangle
-                          boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 5.0,),]),
+                        borderRadius: BorderRadius.circular(10),// BoxShape.circle or BoxShape.retangle
+                        boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 5.0,),]),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -102,7 +102,7 @@ class _MyHomePageState extends StatelessWidget {
                                       );
                                     },);
                                 }, icon: const Icon(Icons.edit)),
-                                  IconButton(onPressed: () {
+                                IconButton(onPressed: () {
                                     datacontroller.delete_data(datacontroller.allItems![index].id);
                                   }, icon: const Icon(Icons.delete)),
                               ],
