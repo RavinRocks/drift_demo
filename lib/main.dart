@@ -57,8 +57,7 @@ class _MyHomePageState extends StatelessWidget {
                           children: [
                             Column(
                               children: [
-                                Text(datacontroller.allItems![index].title,
-                                    style: const TextStyle(color: Colors.black)),
+                                Text(datacontroller.allItems![index].title,style: const TextStyle(color: Colors.black)),
                                 Text(datacontroller.allItems![index].content, style: const TextStyle(color: Colors.black)),
                               ],
                             ),
