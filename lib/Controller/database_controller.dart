@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../databsase/database.dart';
-import '../main.dart';
 import 'package:drift/drift.dart' as dr;
-
 
 class database_controller extends GetxController
 {
@@ -12,7 +10,6 @@ class database_controller extends GetxController
   TextEditingController content_controller =TextEditingController();
   TextEditingController title_update_controller =TextEditingController();
   TextEditingController content_update_controller =TextEditingController();
-
 
   List<TodoItem>? allItems=<TodoItem>[].obs;
   final database = AppDatabase();

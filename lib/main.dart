@@ -52,67 +52,62 @@ class _MyHomePageState extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.white, shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),// BoxShape.circle or BoxShape.retangle
                           boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 5.0,),]),
-                        child: InkWell(
-                          onTap: () {
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Column(
-                                children: [
-                                  Text(datacontroller.allItems![index].title,
-                                      style: const TextStyle(color: Colors.black)),
-                                  Text(datacontroller.allItems![index].content, style: const TextStyle(color: Colors.black)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                   IconButton(onPressed: () {
-
-                                    datacontroller.title_update_controller.text=datacontroller.allItems![index].title;
-                                   datacontroller.content_update_controller.text=datacontroller.allItems![index].content;
-                                    showGeneralDialog(
-                                      context: context,
-                                      barrierLabel: "showGeneralDialog",
-                                      barrierDismissible: true,
-                                      transitionDuration: const Duration(milliseconds: 400),
-                                      pageBuilder: (context, animation, secondaryAnimation) {
-                                        return Dialog(
-                                          backgroundColor: Colors.white,
-                                          elevation: 0,
-                                          child: Container(
-                                            height: 150,
-                                            margin: const EdgeInsets.all(20),
-                                            child: Column(
-                                              children: [
-                                                TextFormField(
-                                                    controller: datacontroller.title_update_controller,
-                                                    decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
-                                                        hintText: datacontroller.allItems![index].title)),
-                                                TextFormField(
-                                                    controller:datacontroller.content_update_controller,
-                                                    decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
-                                                        hintText: datacontroller.allItems![index].content)),
-                                                TextButton(onPressed: () {
-                                                  datacontroller.update_data(datacontroller.allItems![index].id,datacontroller.title_update_controller.text,
-                                                      datacontroller.content_update_controller.text);
-                                                  datacontroller.title_update_controller.clear();
-                                                  datacontroller.content_update_controller.clear();
-                                                  Navigator.pop(context);
-                                                }, child: const Text('Update'))
-                                              ],
-                                            ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                Text(datacontroller.allItems![index].title,
+                                    style: const TextStyle(color: Colors.black)),
+                                Text(datacontroller.allItems![index].content, style: const TextStyle(color: Colors.black)),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                 IconButton(onPressed: () {
+                                  datacontroller.title_update_controller.text=datacontroller.allItems![index].title;
+                                  datacontroller.content_update_controller.text=datacontroller.allItems![index].content;
+                                  showGeneralDialog(
+                                    context: context,
+                                    barrierLabel: "showGeneralDialog",
+                                    barrierDismissible: true,
+                                    transitionDuration: const Duration(milliseconds: 400),
+                                    pageBuilder: (context, animation, secondaryAnimation) {
+                                      return Dialog(
+                                        backgroundColor: Colors.white,
+                                        elevation: 0,
+                                        child: Container(
+                                          height: 150,
+                                          margin: const EdgeInsets.all(20),
+                                          child: Column(
+                                            children: [
+                                              TextFormField(
+                                                  controller: datacontroller.title_update_controller,
+                                                  decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
+                                                      hintText: datacontroller.allItems![index].title)),
+                                              TextFormField(
+                                                  controller:datacontroller.content_update_controller,
+                                                  decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
+                                                      hintText: datacontroller.allItems![index].content)),
+                                              TextButton(onPressed: () {
+                                                datacontroller.update_data(datacontroller.allItems![index].id,datacontroller.title_update_controller.text,
+                                                    datacontroller.content_update_controller.text);
+                                                datacontroller.title_update_controller.clear();
+                                                datacontroller.content_update_controller.clear();
+                                                Navigator.pop(context);
+                                              }, child: const Text('Update'))
+                                            ],
                                           ),
-                                        );
-                                      },);
-                                  }, icon: const Icon(Icons.edit)),
-                                    IconButton(onPressed: () {
-                                      datacontroller.delete_data(datacontroller.allItems![index].id);
-                                    }, icon: const Icon(Icons.delete)),
-                                ],
-                              )
-                            ],
-                          ),
+                                        ),
+                                      );
+                                    },);
+                                }, icon: const Icon(Icons.edit)),
+                                  IconButton(onPressed: () {
+                                    datacontroller.delete_data(datacontroller.allItems![index].id);
+                                  }, icon: const Icon(Icons.delete)),
+                              ],
+                            )
+                          ],
                         ),
                       );
                     },),
