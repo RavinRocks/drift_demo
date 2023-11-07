@@ -84,17 +84,17 @@ class _MyHomePageState extends StatelessWidget {
                                               TextFormField(
                                                   controller: datacontroller.title_update_controller,
                                                   decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
-                                                      hintText: datacontroller.allItems![index].title)),
+                                                  hintText: datacontroller.allItems![index].title)),
                                               TextFormField(
                                                   controller:datacontroller.content_update_controller,
                                                   decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
-                                                      hintText: datacontroller.allItems![index].content)),
+                                                  hintText: datacontroller.allItems![index].content)),
                                               TextButton(onPressed: () {
-                                                datacontroller.update_data(datacontroller.allItems![index].id,datacontroller.title_update_controller.text,
-                                                    datacontroller.content_update_controller.text);
-                                                datacontroller.title_update_controller.clear();
-                                                datacontroller.content_update_controller.clear();
-                                                Navigator.pop(context);
+                                                  datacontroller.update_data(datacontroller.allItems![index].id,datacontroller.title_update_controller.text,
+                                                  datacontroller.content_update_controller.text);
+                                                  datacontroller.title_update_controller.clear();
+                                                  datacontroller.content_update_controller.clear();
+                                                  Navigator.pop(context);
                                               }, child: const Text('Update'))
                                             ],
                                           ),
@@ -103,8 +103,9 @@ class _MyHomePageState extends StatelessWidget {
                                     },);
                                 }, icon: const Icon(Icons.edit)),
                                 IconButton(onPressed: () {
-                                    datacontroller.delete_data(datacontroller.allItems![index].id);
-                                  }, icon: const Icon(Icons.delete)),
+                                  datacontroller.delete_data(datacontroller.allItems![index].id);
+                                  },
+                                icon: const Icon(Icons.delete)),
                               ],
                             )
                           ],
@@ -131,14 +132,14 @@ class _MyHomePageState extends StatelessWidget {
                       children: [
                         TextField(controller:datacontroller. title_controller,
                             decoration: const InputDecoration(border: InputBorder.none,
-                                fillColor: Colors.grey,
-                                hintText: 'Title')),
+                            fillColor: Colors.grey,
+                            hintText: 'Title')),
                         TextField(controller: datacontroller.content_controller,
                             decoration: const InputDecoration(border: InputBorder.none,
-                                fillColor: Colors.grey,
-                                hintText: 'Content')),
+                            fillColor: Colors.grey,
+                            hintText: 'Content')),
                         TextButton(onPressed: () {
-                          datacontroller.insertData(datacontroller.title_controller.text, datacontroller.content_controller.text);
+                            datacontroller.insertData(datacontroller.title_controller.text, datacontroller.content_controller.text);
                             datacontroller.onInit();
                             datacontroller.title_controller.clear();
                             datacontroller.content_controller.clear();
