@@ -73,13 +73,13 @@ class _MyHomePageState extends StatelessWidget {
                                     transitionDuration: const Duration(milliseconds: 400),
                                     pageBuilder: (context, animation, secondaryAnimation) {
                                       return Dialog(
-                                        backgroundColor: Colors.white,
-                                        elevation: 0,
+                                      backgroundColor: Colors.white,
+                                      elevation: 0,
                                         child: Container(
-                                          height: 150,
-                                          margin: const EdgeInsets.all(20),
+                                        height: 150,
+                                        margin: const EdgeInsets.all(20),
                                           child: Column(
-                                            children: [
+                                          children: [
                                               TextFormField(
                                                   controller: datacontroller.title_update_controller,
                                                   decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
@@ -100,57 +100,55 @@ class _MyHomePageState extends StatelessWidget {
                                         ),
                                       );
                                     },);
-                                }, icon: const Icon(Icons.edit)),
-                                IconButton(onPressed: () {
-                                  datacontroller.delete_data(datacontroller.allItems![index].id);
-                                  },
-                                icon: const Icon(Icons.delete)),
-                              ],
-                            )
-                          ],
-                        ),
-                      );
-                    },),
-                )
-              ],
-            ),
-            floatingActionButton: FloatingActionButton(onPressed: () {
-            showGeneralDialog(
-              context: context,
-              barrierLabel: "showGeneralDialog",
-              barrierDismissible: true,
-              transitionDuration: const Duration(milliseconds: 400),
-              pageBuilder: (context, animation, secondaryAnimation) {
-                return Dialog(
-                  backgroundColor: Colors.white,
-                  elevation: 0,
-                  child: Container(
-                    height: 150,
-                    margin: const EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        TextField(controller:datacontroller. title_controller,
-                            decoration: const InputDecoration(border: InputBorder.none,
-                            fillColor: Colors.grey,
-                            hintText: 'Title')),
-                        TextField(controller: datacontroller.content_controller,
-                            decoration: const InputDecoration(border: InputBorder.none,
-                            fillColor: Colors.grey,
-                            hintText: 'Content')),
-                        TextButton(onPressed: () {
-                            datacontroller.insertData(datacontroller.title_controller.text, datacontroller.content_controller.text);
-                            datacontroller.onInit();
-                            datacontroller.title_controller.clear();
-                            datacontroller.content_controller.clear();
-                            Navigator.pop(context);
-                        }, child: const Text('Insert'))
+                                },icon: const Icon(Icons.edit)),
+                              IconButton(onPressed: () {
+                              datacontroller.delete_data(datacontroller.allItems![index].id);
+                              },icon: const Icon(Icons.delete)),
+                           ],
+                        )
                       ],
                     ),
+                  );
+                },),
+            )
+          ],
+        ),floatingActionButton: FloatingActionButton(onPressed: () {
+          showGeneralDialog(
+            context: context,
+            barrierLabel: "showGeneralDialog",
+            barrierDismissible: true,
+            transitionDuration: const Duration(milliseconds: 400),
+            pageBuilder: (context, animation, secondaryAnimation) {
+              return Dialog(
+                backgroundColor: Colors.white,
+                elevation: 0,
+                child: Container(
+                  height: 150,
+                  margin: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      TextField(controller:datacontroller. title_controller,
+                          decoration: const InputDecoration(border: InputBorder.none,
+                          fillColor: Colors.grey,
+                          hintText: 'Title')),
+                      TextField(controller: datacontroller.content_controller,
+                          decoration: const InputDecoration(border: InputBorder.none,
+                          fillColor: Colors.grey,
+                          hintText: 'Content')),
+                      TextButton(onPressed: () {
+                          datacontroller.insertData(datacontroller.title_controller.text, datacontroller.content_controller.text);
+                          datacontroller.onInit();
+                          datacontroller.title_controller.clear();
+                          datacontroller.content_controller.clear();
+                          Navigator.pop(context);
+                      }, child: const Text('Insert'))
+                    ],
                   ),
-                );
-              },);
-          }, child: const Icon(Icons.add,)),
-          );
-      });
+                ),
+              );
+            },);
+        }, child: const Icon(Icons.add,)),
+        );
+    });
   }
 }
