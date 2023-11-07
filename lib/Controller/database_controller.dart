@@ -1,4 +1,5 @@
 // ignore_for_file: camel_case_types
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../databsase/database.dart';
 import '../main.dart';
@@ -7,8 +8,13 @@ import 'package:drift/drift.dart' as dr;
 
 class database_controller extends GetxController
 {
+  TextEditingController title_controller =TextEditingController();
+  TextEditingController content_controller =TextEditingController();
+  TextEditingController title_update_controller =TextEditingController();
+  TextEditingController content_update_controller =TextEditingController();
+
+
   List<TodoItem>? allItems=<TodoItem>[].obs;
-  List<TodoItem>? allDataRecords;
   final database = AppDatabase();
 
   @override

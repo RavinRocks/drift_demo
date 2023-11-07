@@ -28,10 +28,6 @@ class MyApp extends StatelessWidget
 class _MyHomePageState extends StatelessWidget {
 
   final datacontroller = Get.put(database_controller());
-  TextEditingController title_controller =TextEditingController();
-  TextEditingController content_controller =TextEditingController();
-  TextEditingController title_update_controller =TextEditingController();
-  TextEditingController content_update_controller =TextEditingController();
 
   @override
   Widget build(BuildContext context)
@@ -73,8 +69,8 @@ class _MyHomePageState extends StatelessWidget {
                                 children: [
                                    IconButton(onPressed: () {
 
-                                    title_update_controller.text=datacontroller.allItems![index].title;
-                                    content_update_controller.text=datacontroller.allItems![index].content;
+                                    datacontroller.title_update_controller.text=datacontroller.allItems![index].title;
+                                   datacontroller.content_update_controller.text=datacontroller.allItems![index].content;
                                     showGeneralDialog(
                                       context: context,
                                       barrierLabel: "showGeneralDialog",
@@ -90,18 +86,18 @@ class _MyHomePageState extends StatelessWidget {
                                             child: Column(
                                               children: [
                                                 TextFormField(
-                                                    controller: title_update_controller,
+                                                    controller: datacontroller.title_update_controller,
                                                     decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
                                                         hintText: datacontroller.allItems![index].title)),
                                                 TextFormField(
-                                                    controller: content_update_controller,
+                                                    controller:datacontroller.content_update_controller,
                                                     decoration: InputDecoration(border: InputBorder.none, fillColor: Colors.grey,
                                                         hintText: datacontroller.allItems![index].content)),
                                                 TextButton(onPressed: () {
-                                                  datacontroller.update_data(datacontroller.allItems![index].id, title_update_controller.text,
-                                                      content_update_controller.text);
-                                                  title_update_controller.clear();
-                                                  content_update_controller.clear();
+                                                  datacontroller.update_data(datacontroller.allItems![index].id,datacontroller.title_update_controller.text,
+                                                      datacontroller.content_update_controller.text);
+                                                  datacontroller.title_update_controller.clear();
+                                                  datacontroller.content_update_controller.clear();
                                                   Navigator.pop(context);
                                                 }, child: const Text('Update'))
                                               ],
@@ -138,19 +134,19 @@ class _MyHomePageState extends StatelessWidget {
                     margin: const EdgeInsets.all(20),
                     child: Column(
                       children: [
-                        TextField(controller: title_controller,
+                        TextField(controller:datacontroller. title_controller,
                             decoration: const InputDecoration(border: InputBorder.none,
                                 fillColor: Colors.grey,
                                 hintText: 'Title')),
-                        TextField(controller: content_controller,
+                        TextField(controller: datacontroller.content_controller,
                             decoration: const InputDecoration(border: InputBorder.none,
                                 fillColor: Colors.grey,
                                 hintText: 'Content')),
                         TextButton(onPressed: () {
-                          datacontroller.insertData(title_controller.text, content_controller.text);
+                          datacontroller.insertData(datacontroller.title_controller.text, datacontroller.content_controller.text);
                             datacontroller.onInit();
-                            title_controller.clear();
-                            content_controller.clear();
+                            datacontroller.title_controller.clear();
+                            datacontroller.content_controller.clear();
                             Navigator.pop(context);
                         }, child: const Text('Insert'))
                       ],
